@@ -15,7 +15,7 @@
     src="chrome://xulschoolhello/content/browserOverlay.js" />
 
   <hbox>
-    <panel id="clicktionary-definition-panel" onpopupshowing="document.getElementById('clicktionary-definition-label').value = content.document.getSelection().getRangeAt(0).toString()">
+    <panel id="clicktionary-definition-panel" onpopupshowing="XULSchoolChrome.BrowserOverlay.define(event);">
       <label id="clicktionary-definition-label"/>
     </panel>
   </hbox>
