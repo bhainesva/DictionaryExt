@@ -1,10 +1,10 @@
 An attempt to imitate the functionality of the Google Dictionary chrome extension. Also to learn the basics of extension development.
 
 --------------------------------------------------
-TODO
+GOALS
 --------------------------------------------------
-1. Remove xulschool remnants.
+1. Remove xulschool remnants. (Done)
 2. Check inputs to avoid frivolous requests.
 3. Format output to be multiple lines.
 4. Make it pretty.
-5. Include additional information besides primary definition.
+5. Include additional information besides primary definition/improve parsing.
