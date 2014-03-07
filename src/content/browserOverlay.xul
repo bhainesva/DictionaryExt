@@ -2,24 +2,21 @@
 
 <?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
 <?xml-stylesheet type="text/css"
-  href="chrome://clicktionary/skin/browserOverlay.css" ?>
+  href="chrome://xulschoolhello/skin/browserOverlay.css" ?>
 
 <!DOCTYPE overlay SYSTEM
-  "chrome://clicktionary/locale/browserOverlay.dtd">
+  "chrome://xulschoolhello/locale/browserOverlay.dtd">
 
-<overlay id="clicktionary-browser-overlay"
+<overlay id="xulschoolhello-browser-overlay"
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   >
 
   <script type="application/x-javascript"
-    src="chrome://clicktionary/content/browserOverlay.js" />
+    src="chrome://xulschoolhello/content/browserOverlay.js" />
 
   <hbox>
-    <panel id="clicktionary-definition-panel" onpopupshowing="Clicktionary.BrowserOverlay.sayHello(event);">
+    <panel id="clicktionary-definition-panel" onpopupshowing="XULSchoolChrome.BrowserOverlay.define(event);">
       <label id="clicktionary-definition-label"/>
-      <iframe>
-        <p>Your browser does not support iframes.</p>
-      </iframe>
     </panel>
   </hbox>
 
@@ -27,23 +24,33 @@
     window.ondblclick = getSelectionHtml;
 
     function getSelectionHtml(aEvent) {
+      // var selObj = content.document.getSelection();
+      // var rangeObj = selObj.getRangeAt(0);
+      // if (rangeObj.toString().length != 0) {
+      //   alert(selObj.getRangeAt(0).toString());
+      //}
+      // let prompts =
+      // Cc["@mozilla.org/embedcomp/prompt-service;1"].
+      // getService(Ci.nsIPromptService);
+
+      // prompts.alert(window, "Alert Title", "Hello!");
       document.getElementById('clicktionary-definition-panel').openPopup(null, "before_start", aEvent.screenX, aEvent.screenY, false, false);
     }
 
   </script>
 
   <stringbundleset id="stringbundleset">
-    <stringbundle id="clicktionary-string-bundle"
-      src="chrome://clicktionary/locale/browserOverlay.properties" />
+    <stringbundle id="xulschoolhello-string-bundle"
+      src="chrome://xulschoolhello/locale/browserOverlay.properties" />
   </stringbundleset>
 
   <menubar id="main-menubar">
-    <menu id="clicktionary-hello-menu" label="&clicktionary.hello.label;"
+    <menu id="xulschoolhello-hello-menu" label="&xulschoolhello.hello.label;"
      insertafter="helpMenu">
       <menupopup>
-        <menuitem id="clicktionary-hello-menu-item"
-          label="&clicktionary.hello.label;" 
-          oncommand="Clicktionary.BrowserOverlay.sayHello(event);"/>
+        <menuitem id="xulschoolhello-hello-menu-item"
+          label="&xulschoolhello.hello.label;" 
+          oncommand="XULSchoolChrome.BrowserOverlay.sayHello(event);"/>
       </menupopup>
     </menu>
   </menubar>

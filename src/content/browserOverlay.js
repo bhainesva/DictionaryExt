@@ -1,14 +1,22 @@
 /**
- * Clicktionary namespace.
+ * XULSchoolChrome namespace.
  */
 
-var Clicktionary = {};
+var XULSchoolChrome = {};
 
 /**
  * Controls the browser overlay for the Hello World extension.
  */
-Clicktionary.BrowserOverlay = {
+XULSchoolChrome.BrowserOverlay = {
+  /**
+   * Says 'Hello' to the user.
+   */
+  // sayHello : function(aEvent) {
+  //   let stringBundle = document.getElementById("xulschoolhello-string-bundle");
+  //   let message = stringBundle.getString("xulschoolhello.greeting.label");
 
+  //   window.alert(message);
+  // }
 
     sayHello : function(aEvent) {
       var selRange = content.document.getSelection ();

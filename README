@@ -3,7 +3,7 @@ An attempt to imitate the functionality of the Google Dictionary chrome extensio
 --------------------------------------------------
 GOALS
 --------------------------------------------------
-1. Remove xulschool remnants. (Done)
+1. Remove xulschool remnants.
 2. Check inputs to avoid frivolous requests.
 3. Format output to be multiple lines.
 4. Make it pretty.
