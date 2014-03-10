@@ -4,12 +4,12 @@
   xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 
   <Description about="urn:mozilla:install-manifest">
-    <em:id>clicktionary@xulschool.com</em:id>
-    <em:name>XUL School Clicktionary</em:name>
-    <em:description>Welcome to XUL Dictionary!</em:description>
+    <em:id>clicktionary@bhainesva.com</em:id>
+    <em:name>Clicktionary</em:name>
+    <em:description>Clicktionary!</em:description>
     <em:version>0.1</em:version>
-    <em:creator>Appcoast</em:creator>
-    <em:homepageURL>https://developer.mozilla.org/en/XUL_School</em:homepageURL>
+    <em:creator>bhainesva</em:creator>
+    <em:homepageURL>https://github.com/bhainesva/DictionaryExt</em:homepageURL>
     <em:type>2</em:type>
 
     <!-- Mozilla Firefox -->
