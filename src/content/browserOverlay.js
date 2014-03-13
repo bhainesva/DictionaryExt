@@ -8,15 +8,6 @@ var Clicktionary = {};
  * Controls the browser overlay for the Hello World extension.
  */
 Clicktionary.BrowserOverlay = {
-  /**
-   * Says 'Hello' to the user.
-   */
-  // sayHello : function(aEvent) {
-  //   let stringBundle = document.getElementById("clicktionary-string-bundle");
-  //   let message = stringBundle.getString("clicktionary.greeting.label");
-
-  //   window.alert(message);
-  // }
 
     sayHello : function(aEvent) {
       var selRange = content.document.getSelection ();
@@ -24,22 +15,28 @@ Clicktionary.BrowserOverlay = {
     },
 
     define : function(aEvent) {
-      var selRange = content.document.getSelection().getRangeAt(0);
-      var word = selRange.toString();
+      if(!Clicktionary.BrowserOverlay.checkInput()) {
+        document.getElementById('clicktionary-definition-label').value = "Not a word.";
+      }
 
-      var oReq = new XMLHttpRequest();
-      oReq.overrideMimeType("text/xml");
-      oReq.onload = function reqListener () {
-        console.log(this.responseXML.firstChild.textContent);
-        var fullDef = Clicktionary.BrowserOverlay.parseDefinition(this.responseXML.firstChild.textContent);
-        var defOne = fullDef.substr(fullDef.indexOf("1."), fullDef.substr(fullDef.indexOf("1.")).indexOf(";"));
-        var defOnePretty = (defOne.substr(3) + ".").replace(/\s+/g, " ");
-        console.log(defOnePretty);
-        document.getElementById('clicktionary-definition-label').value = fullDef;        
-      };
+      else {
+        var selRange = content.document.getSelection().getRangeAt(0);
+        var word = selRange.toString();
 
-      oReq.open("get", "http://services.aonaware.com//DictService/DictService.asmx/DefineInDict?dictId=gcide&word=" + word, true);
-      oReq.send();
+        var oReq = new XMLHttpRequest();
+        oReq.overrideMimeType("text/xml");
+        oReq.onload = function reqListener () {
+          console.log(this.responseXML.firstChild.textContent);
+          var fullDef = Clicktionary.BrowserOverlay.parseDefinition(this.responseXML.firstChild.textContent);
+          var defOne = fullDef.substr(fullDef.indexOf("1."), fullDef.substr(fullDef.indexOf("1.")).indexOf(";"));
+          var defOnePretty = (defOne.substr(3) + ".").replace(/\s+/g, " ");
+          console.log(defOnePretty);
+          document.getElementById('clicktionary-definition-label').value = fullDef;        
+        };
+
+        oReq.open("get", "http://services.aonaware.com//DictService/DictService.asmx/DefineInDict?dictId=gcide&word=" + word, true);
+        oReq.send();
+      }
     },
 
     parseDefinition : function(definition) {
@@ -68,6 +65,13 @@ Clicktionary.BrowserOverlay = {
 
       console.log(defOnePretty);
       return defOnePretty;
+    },
+
+    checkInput : function(aEvent) {
+      var selRange = content.document.getSelection().getRangeAt(0);
+      var word = selRange.toString().trim();
+      var result = /^[a-zA-Z]*$/.test(word);
+      return result;
     }
 };
 
